@@ -1,0 +1,49 @@
+::ng-deep .mat-tab-labels {
+  justify-content: space-around !important;
+}
+
+::ng-deep mat-tab-header {
+  margin-bottom: 50px;
+  background-color: rgba(2, 48, 71, 1);
+  border-radius: 15px;
+}
+
+::ng-deep .mat-toolbar {
+  z-index: 998;
+  position: fixed
+}
+
+::ng-deep .mat-tab-group {
+  margin-top: 55px !important;
+}
+
+::ng-deep .mat-tab-label {
+  color: rgba(251, 133, 0, 1) !important;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: rgba(251, 133, 0, 1) !important;
+}
+
+.tabGroup {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-tab-body-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.con {
+  margin: 0 3px 16px 3px;
+}
+

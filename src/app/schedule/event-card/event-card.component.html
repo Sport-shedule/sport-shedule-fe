@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title>{{ event.name }}</mat-card-title>
+  <mat-card-content>
+    <img class="banner" *ngIf="event.banner" loading="lazy" src="{{ event.banner }}">
+    <div class="empty" *ngIf="!event.banner">Banner</div>
+    <div>{{ event.firstParticipant }}</div>
+    <div>{{ event.firstScore }}</div>
+    <div>{{ event.secondParticipant }}</div>
+    <div>{{ event.secondScore }}</div>
+  </mat-card-content>
+</mat-card>
