@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>
+    <input [autocomplete]="false" matInput [(ngModel)]="event.name" class="input"/>
+  </mat-card-title>
+  <mat-card-content>
+    <img class="banner" (click)="selectImage()" *ngIf="event.banner" loading="lazy" src="{{ event.banner }}">
+    <div class="empty" (click)="selectImage()" *ngIf="!event.banner">Banner</div>
+
+    <div class="teams">
+      <div class="team">
+        <input [autocomplete]="false" matInput [(ngModel)]="event.firstParticipant" class="input"/>
+        <input [autocomplete]="false" matInput [(ngModel)]="event.firstScore" class="score input"/>
+      </div>
+      <div class="team">
+        <input [autocomplete]="false" matInput [(ngModel)]="event.secondScore" class="score input"/>
+        <input [autocomplete]="false" matInput [(ngModel)]="event.secondParticipant" class="input"/>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-button (click)="cancel()">
+      Cancel
+    </button>
+    <button mat-button (click)="save()">
+      Save
+    </button>
+  </mat-card-footer>
+</mat-card>

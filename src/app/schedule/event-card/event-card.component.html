@@ -1,11 +1,32 @@
 <mat-card>
-  <mat-card-title>{{ event.name }}</mat-card-title>
+  <mat-card-title>
+    <span [matTooltip]="event.name" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip'"
+          [matTooltipDisabled]="event.name.length < 20" [matTooltipShowDelay]="0"
+          class="title-name">{{ event.name }}</span>
+  </mat-card-title>
   <mat-card-content>
     <img class="banner" *ngIf="event.banner" loading="lazy" src="{{ event.banner }}">
     <div class="empty" *ngIf="!event.banner">Banner</div>
-    <div>{{ event.firstParticipant }}</div>
-    <div>{{ event.firstScore }}</div>
-    <div>{{ event.secondParticipant }}</div>
-    <div>{{ event.secondScore }}</div>
+
+    <div class="teams">
+      <div class="team">
+        <div>{{ event.firstParticipant }}</div>
+        <div class="score">{{ event.firstScore }}</div>
+      </div>
+      <div class="team">
+        <div class="score">{{ event.secondScore }}</div>
+        <div>{{ event.secondParticipant }}</div>
+      </div>
+    </div>
   </mat-card-content>
+  <mat-card-footer>
+    <button mat-button (click)="edit()">
+      Edit
+      <!--<mat-icon [inline]="true">edit_outline</mat-icon>-->
+    </button>
+    <button mat-button (click)="delete()">
+      Delete
+      <!--<mat-icon [inline]="true">delete_outline</mat-icon>-->
+    </button>
+  </mat-card-footer>
 </mat-card>

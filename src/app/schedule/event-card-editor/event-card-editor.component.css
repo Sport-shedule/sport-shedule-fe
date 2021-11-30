@@ -2,7 +2,6 @@ mat-card {
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 400px;
   background-color: rgba(2, 48, 71, 1);
   color: rgba(251, 133, 0, 1);
   border-radius: 15px;
@@ -46,11 +45,16 @@ mat-card-title {
   color: white;
 }
 
-.title-name {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  line-height: 30px;
+.input {
+  color: rgba(251, 133, 0, 1);
+  flex-shrink: 0;
+  border: 1px solid #ffffff69;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  --border: 6px;
+  border-radius: var(--border);
+  width: calc(250px - var(--border));
 }
 
 .title-buttons {
@@ -77,10 +81,15 @@ mat-card-title {
 
 .score {
   margin: 2px 0 2px 0;
+  width: 50%;
 }
 
 mat-card-footer {
   display: flex;
   margin: 10px 0 0 0;
   justify-content: flex-end;
+}
+
+input:focus {
+  outline-color: #ffffff69;
 }

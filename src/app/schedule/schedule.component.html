@@ -1,21 +1,21 @@
-<mat-tab-group  class="tabGroup">
+<mat-tab-group class="tabGroup">
   <mat-tab label="Football">
-    <div class="con" *ngFor="let event of footballEvents">
+    <div class="container" *ngFor="let event of storage.footballEvents">
       <app-event-card [event]="event"></app-event-card>
     </div>
   </mat-tab>
   <mat-tab label="Basketball">
-    <div class="con" *ngFor="let event of basketEvents">
+    <div class="container" *ngFor="let event of storage.basketEvents">
       <app-event-card [event]="event"></app-event-card>
     </div>
   </mat-tab>
   <mat-tab label="Tennis">
-    <div class="con" *ngFor="let event of tennisEvents">
+    <div class="container" *ngFor="let event of storage.tennisEvents">
       <app-event-card [event]="event"></app-event-card>
     </div>
   </mat-tab>
   <mat-tab label="Hockey">
-    <div class="con" *ngFor="let event of hockeyEvents">
+    <div class="container" *ngFor="let event of storage.hockeyEvents">
       <app-event-card [event]="event"></app-event-card>
     </div>
   </mat-tab>
