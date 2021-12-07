@@ -11,7 +11,7 @@ import { EventCardEditorComponent } from '../event-card-editor/event-card-editor
 })
 export class EventCardComponent implements OnInit {
 
-  @Input() event: SportEvent;
+  @Input() sportEvent: SportEvent;
 
   constructor(private storage: EventStorageService,
               private dialog: MatDialog) {
@@ -21,7 +21,7 @@ export class EventCardComponent implements OnInit {
   }
 
   delete() {
-    const index = this.storage.events.indexOf(this.event);
+    const index = this.storage.events.indexOf(this.sportEvent);
     this.storage.events.splice(index, 1);
     this.storage.refresh();
   }
@@ -29,11 +29,8 @@ export class EventCardComponent implements OnInit {
   edit() {
     const a = this.dialog.open(EventCardEditorComponent, {
       data: {
-        event: this.event
+        event: this.sportEvent
       }
-    })
-    a.afterClosed().subscribe(_ => {
-      this.event = a.componentInstance.event;
-    })
+    });
   }
 }

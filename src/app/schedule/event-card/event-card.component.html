@@ -1,21 +1,21 @@
 <mat-card>
   <mat-card-title>
-    <span [matTooltip]="event.name" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip'"
-          [matTooltipDisabled]="event.name.length < 20" [matTooltipShowDelay]="0"
-          class="title-name">{{ event.name }}</span>
+    <span [matTooltip]="sportEvent.name" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip'"
+          [matTooltipDisabled]="sportEvent.name.length < 20" [matTooltipShowDelay]="0"
+          class="title-name">{{ sportEvent.name }}</span>
   </mat-card-title>
   <mat-card-content>
-    <img class="banner" *ngIf="event.banner" loading="lazy" src="{{ event.banner }}">
-    <div class="empty" *ngIf="!event.banner">Banner</div>
+    <img class="banner" *ngIf="sportEvent.banner" loading="lazy" [src]="'data:image/jpeg;base64,' + sportEvent.banner">
+    <div class="empty" *ngIf="!sportEvent.banner">Banner</div>
 
     <div class="teams">
       <div class="team">
-        <div>{{ event.firstParticipant }}</div>
-        <div class="score">{{ event.firstScore }}</div>
+        <div>{{ sportEvent.firstParticipant }}</div>
+        <div class="score">{{ sportEvent.firstScore }}</div>
       </div>
       <div class="team">
-        <div class="score">{{ event.secondScore }}</div>
-        <div>{{ event.secondParticipant }}</div>
+        <div class="score">{{ sportEvent.secondScore }}</div>
+        <div>{{ sportEvent.secondParticipant }}</div>
       </div>
     </div>
   </mat-card-content>

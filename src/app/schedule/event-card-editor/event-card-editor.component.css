@@ -1,7 +1,7 @@
 mat-card {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 270px;
   background-color: rgba(2, 48, 71, 1);
   color: rgba(251, 133, 0, 1);
   border-radius: 15px;
@@ -28,8 +28,8 @@ mat-card-title {
 
 .banner, .empty {
   display: flex;
-  width: 250px;
-  height: 200px;
+  width: 270px;
+  height: 220px;
   object-fit: contain;
   align-items: center;
   border-radius: 15px;
@@ -54,7 +54,7 @@ mat-card-title {
   font-size: inherit;
   --border: 6px;
   border-radius: var(--border);
-  width: calc(250px - var(--border));
+  width: calc(270px - var(--border));
 }
 
 .title-buttons {

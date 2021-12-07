@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { SportEvent } from '../schedule.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { EventStorageService } from '../services/event-storage.service';
 
 function jsonCopy(src: any) {
   return JSON.parse(JSON.stringify(src));
@@ -15,20 +16,33 @@ export class EventCardEditorComponent implements OnInit {
   event: SportEvent;
 
   constructor(@Inject(MAT_DIALOG_DATA) private dialogData: any,
-              private dialogRef: MatDialogRef<EventCardEditorComponent>) {
-    this.event = jsonCopy(dialogData.event)
+              private dialogRef: MatDialogRef<EventCardEditorComponent>,
+              private storage: EventStorageService) {
+    this.event = jsonCopy(dialogData.event);
   }
-
 
   ngOnInit(): void {
   }
 
-  selectImage() {
+  selectImage(e: any) {
+    const reader = new FileReader();
+    const ref = this;
+    reader.onload = () => {
+      const base64 = btoa(reader.result as string);
+      this.onChange(base64);
+      ref.event.banner = base64;
+    };
+    const inputFile = e.target.files[0];
 
+    reader.readAsBinaryString(inputFile);
   }
 
+  onChange = (value: any) => {
+  };
+
   save() {
-    this.dialogData.event = this.event;
+    const b = this.storage.events.find(_ => _ == this.dialogData.event);
+    b?.update(this.event);
     this.dialogRef.close();
   }
 

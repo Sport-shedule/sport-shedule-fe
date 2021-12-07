@@ -20,10 +20,17 @@ export class SportEvent {
     this.firstScore = firstScore;
     this.secondScore = secondScore;
   }
-}
 
-const CARD_OUTER_WIDTH = 314;
-const CARD_CONTAINER_WIDTH = 0.8;
+  update(event: SportEvent) {
+    this.type = event.type;
+    this.name = event.name;
+    this.firstParticipant = event.firstParticipant;
+    this.secondParticipant = event.secondParticipant;
+    this.firstScore = event.firstScore;
+    this.secondScore = event.secondScore;
+    this.banner = event.banner;
+  }
+}
 
 @Component({
   selector: 'app-schedule',

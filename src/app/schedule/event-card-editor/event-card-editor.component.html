@@ -1,19 +1,21 @@
 <mat-card>
   <mat-card-title>
-    <input [autocomplete]="false" matInput [(ngModel)]="event.name" class="input"/>
+    <input autocomplete="off" matInput [(ngModel)]="event.name" class="input">
   </mat-card-title>
   <mat-card-content>
-    <img class="banner" (click)="selectImage()" *ngIf="event.banner" loading="lazy" src="{{ event.banner }}">
-    <div class="empty" (click)="selectImage()" *ngIf="!event.banner">Banner</div>
-
+    <img class="banner" (click)="imageElement.click()" *ngIf="event.banner" loading="lazy" [src]="'data:image/jpeg;base64,' + event.banner">
+    <div class="empty" (click)="imageElement.click()" *ngIf="!event.banner">Banner</div>
+    <input type="file" #imageElement (change)="selectImage($event)"
+           hidden
+           accept="image/*" style="display:none">
     <div class="teams">
       <div class="team">
-        <input [autocomplete]="false" matInput [(ngModel)]="event.firstParticipant" class="input"/>
-        <input [autocomplete]="false" matInput [(ngModel)]="event.firstScore" class="score input"/>
+        <input autocomplete="off" matInput [(ngModel)]="event.firstParticipant" class="input">
+        <input autocomplete="off" matInput [(ngModel)]="event.firstScore" class="score input">
       </div>
       <div class="team">
-        <input [autocomplete]="false" matInput [(ngModel)]="event.secondScore" class="score input"/>
-        <input [autocomplete]="false" matInput [(ngModel)]="event.secondParticipant" class="input"/>
+        <input autocomplete="off" matInput [(ngModel)]="event.secondScore" class="score input">
+        <input autocomplete="off" matInput [(ngModel)]="event.secondParticipant" class="input">
       </div>
     </div>
   </mat-card-content>
