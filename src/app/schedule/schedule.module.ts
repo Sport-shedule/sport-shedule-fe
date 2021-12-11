@@ -11,6 +11,10 @@ import { EventStorageService } from './services/event-storage.service';
 import { EventCardEditorComponent } from './event-card-editor/event-card-editor.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DataSourceService } from './schedule.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -26,13 +30,19 @@ import { MatInputModule } from '@angular/material/input';
     MatTooltipModule,
     MatButtonModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     EventCardComponent,
     EventCardEditorComponent
   ],
-  providers: [EventStorageService]
+  providers: [
+    EventStorageService,
+    DataSourceService
+  ]
 })
 export class ScheduleModule {
 }
