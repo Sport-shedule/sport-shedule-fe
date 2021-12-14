@@ -1,5 +1,9 @@
-<div class="header">
-  <h1 id="title">Sports schedule</h1>
-</div>
+<router-outlet *ngIf="!hasAccess"></router-outlet>
 
-<app-schedule></app-schedule>
+<div class="content" *ngIf="hasAccess">
+  <div class="header">
+    <h1 id="title">Sports schedule</h1>
+  </div>
+
+  <app-schedule></app-schedule>
+</div>

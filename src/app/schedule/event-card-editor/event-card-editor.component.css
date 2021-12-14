@@ -44,7 +44,7 @@ mat-card-title {
 
 .empty {
   justify-content: center;
-  background-color: white;
+  background-color: rgba(229, 229, 229, 1) !important;
   cursor: default;
   border-style: solid;
   border-width: thin;
@@ -60,7 +60,6 @@ mat-card-title {
 }
 
 .mat-input-element::placeholder {
-  color: rgba(251, 133, 0, 0.5);
 }
 
 mat-select.input {
@@ -69,31 +68,31 @@ mat-select.input {
 }
 
 ::ng-deep .mat-select-value {
-  color: rgba(251, 133, 0, 1);
   font-weight: 400;
   padding: 5px ;
 }
 
 ::ng-deep .select.mat-select-panel {
-  background: rgba(52, 71, 82, 1) !important;
+  background-color: rgba(229, 229, 229, 1) !important;
   overflow: hidden !important;
 }
 
 .option {
   height: 40px !important;
-  color: rgba(251, 133, 0, 1) !important;
   padding: 5px !important;
 }
 
 .input {
-  color: rgba(251, 133, 0, 1);
-  border: 1px solid #ffffff69;
-  background-color: #0000000f;
   font-family: inherit;
   font-size: inherit;
   border-radius: var(--border-radius);
   width: calc(270px - var(--border-radius));
   height: 30px;
+  background-color: rgba(229, 229, 229, 1) !important;
+  margin: 15px;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  padding-left: 5px;
 }
 
 .title-buttons {
@@ -162,6 +161,8 @@ input:focus {
   border-right: 1px solid #ffffff69;
   border-left: 1px solid #ffffff69;
   height: 28px;
+  background-color: rgba(229, 229, 229, 1) !important;
+  color: rgb(0, 0, 0);
 }
 
 .quantity.container {

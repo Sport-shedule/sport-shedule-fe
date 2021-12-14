@@ -14,7 +14,7 @@ export class ApiService {
               private originUrl: OriginUrlService) {
   }
 
-  private get jwt(): HttpHeaders {
+  /*private get jwt(): HttpHeaders {
     // create authorization header with jwt token
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
@@ -89,5 +89,5 @@ export class ApiService {
       return _throw(error);
     }
     return EMPTY;
-  }
+  }*/
 }

@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>
     <mat-select class="input" *ngIf="isAdding" label="Select type" [(ngModel)]="sportEvent.type" panelClass="select">
-      <mat-option class="option" *ngFor="let type of keys" [value]="sportEvent.type">{{ type }}</mat-option>
+      <mat-option class="option" *ngFor="let type of keys" [value]="type">{{ type }}</mat-option>
     </mat-select>
     <input autocomplete="off" matInput placeholder="Event name" [(ngModel)]="sportEvent.name" class="input" type="text">
 
