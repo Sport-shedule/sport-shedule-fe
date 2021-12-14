@@ -95,6 +95,15 @@ mat-select.input {
   padding-left: 5px;
 }
 
+.datePicker {
+  width: calc(270px - var(--border-radius));
+
+}
+
+::ng-deep .mat-form-field-label{
+  color:rgba(251, 133, 0, 1) !important;
+}
+
 .title-buttons {
   display: flex;
   justify-content: flex-end;

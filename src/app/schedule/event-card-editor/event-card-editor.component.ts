@@ -3,10 +3,6 @@ import { SportEvent } from '../schedule.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EventStorageService } from '../services/event-storage.service';
 
-function jsonCopy(src: any) {
-  return JSON.parse(JSON.stringify(src));
-}
-
 @Component({
   selector: 'app-event-card-editor',
   templateUrl: './event-card-editor.component.html',

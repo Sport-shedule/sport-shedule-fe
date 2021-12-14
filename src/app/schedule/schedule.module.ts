@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ScheduleRoutingModule } from './schedule-routing.module';
-import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { EventCardComponent } from './event-card/event-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -14,7 +13,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DataSourceService } from './schedule.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,6 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   imports: [
     ScheduleRoutingModule,
-    TableVirtualScrollModule,
     MatCardModule,
     CommonModule,
     MatIconModule,
@@ -33,7 +35,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule
   ],
   exports: [
     EventCardComponent,

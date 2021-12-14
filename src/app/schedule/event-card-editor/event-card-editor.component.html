@@ -5,10 +5,11 @@
     </mat-select>
     <input autocomplete="off" matInput placeholder="Event name" [(ngModel)]="sportEvent.name" class="input" type="text">
 
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field class="datePicker">
+      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="sportEvent.date">
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker>
+      </ngx-mat-datetime-picker>
     </mat-form-field>
 
   </mat-card-title>
