@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ScheduleRoutingModule } from './schedule-routing.module';
-import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 import { EventCardComponent } from './event-card/event-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -11,6 +10,14 @@ import { EventStorageService } from './services/event-storage.service';
 import { EventCardEditorComponent } from './event-card-editor/event-card-editor.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DataSourceService } from './schedule.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
 
 @NgModule({
   declarations: [
@@ -19,20 +26,27 @@ import { MatInputModule } from '@angular/material/input';
   ],
   imports: [
     ScheduleRoutingModule,
-    TableVirtualScrollModule,
     MatCardModule,
     CommonModule,
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule
   ],
   exports: [
     EventCardComponent,
     EventCardEditorComponent
   ],
-  providers: [EventStorageService]
+  providers: [
+    EventStorageService,
+    DataSourceService
+  ]
 })
 export class ScheduleModule {
 }

@@ -1,24 +1,8 @@
-<mat-tab-group class="tabGroup">
-  <mat-tab label="Football">
-    <div class="container" *ngFor="let event of storage.footballEvents">
-      <app-event-card [sportEvent]="event"></app-event-card>
-    </div>
-  </mat-tab>
-  <mat-tab label="Basketball">
-    <div class="container" *ngFor="let event of storage.basketEvents">
-      <app-event-card [sportEvent]="event"></app-event-card>
-    </div>
-  </mat-tab>
-  <mat-tab label="Tennis">
-    <div class="container" *ngFor="let event of storage.tennisEvents">
-      <app-event-card [sportEvent]="event"></app-event-card>
-    </div>
-  </mat-tab>
-  <mat-tab label="Hockey">
-    <div class="container" *ngFor="let event of storage.hockeyEvents">
+<mat-tab-group class="tabGroup" >
+  <mat-tab label="{{ type }}" *ngFor="let type of types">
+    <div class="container" *ngFor="let event of getEvents(type)">
       <app-event-card [sportEvent]="event"></app-event-card>
     </div>
   </mat-tab>
 </mat-tab-group>
-<div>
-</div>
+<button mat-fab (click)="add()" class="toTheTop">+</button>

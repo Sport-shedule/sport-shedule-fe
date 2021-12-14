@@ -8,18 +8,23 @@ import { FormsModule } from '@angular/forms';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
-import { UserService } from './services/user.service';
+import { CurrentUserService } from './services/current-user.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScheduleModule } from './schedule/schedule.module';
+import { AuthenticationService } from './services/authentication.service';
+import { OriginUrlService } from './services/origin-url.service';
+import { ApiService } from './services/api.service';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,10 +37,15 @@ import { ScheduleModule } from './schedule/schedule.module';
     MatTabsModule,
     MatCardModule,
     ScrollingModule,
-    ScheduleModule
+    ScheduleModule,
+    HttpClientModule
   ],
   providers: [
-    UserService
+    CurrentUserService,
+    AuthenticationService,
+    OriginUrlService,
+    ApiService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

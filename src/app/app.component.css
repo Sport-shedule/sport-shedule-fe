@@ -12,6 +12,11 @@
   height: 25%;
 }
 
+.content {
+  height: 100%;
+  width: 100%;
+}
+
 ::ng-deep html::-webkit-scrollbar {
   z-index: 100;
   height: 3px;

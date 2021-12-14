@@ -34,12 +34,12 @@ mat-card-title {
   object-fit: contain;
   align-items: center;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .empty {
   justify-content: center;
   background-color: white;
-  margin-bottom: 10px;
 }
 
 .text {

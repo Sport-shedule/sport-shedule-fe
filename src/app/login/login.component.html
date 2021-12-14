@@ -1,4 +1,15 @@
-<div>
-  <input matInput [(ngModel)]="login" placeholder="Login">
-  <input matInput [(ngModel)]="password" placeholder="Password">
-</div>
+﻿<mat-card class="login-card">
+  <mat-card-title>Authorization</mat-card-title>
+  <form #f="ngForm" (ngSubmit)="f.valid && login()" class="form" novalidate>
+    <input autocomplete="off" matInput name="login" required placeholder="Login" [(ngModel)]="model.username"
+           class="input" type="text">
+
+    <input autocomplete="off" matInput name="password" placeholder="Password" [(ngModel)]="model.password" class="input"
+           type="password">
+
+    <button [disabled]="!f.valid || f.pristine || loading" mat-button type="submit">
+      Log In
+    </button>
+  </form>
+  <div class="error">{{error}}</div>
+</mat-card>

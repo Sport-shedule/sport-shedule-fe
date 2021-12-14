@@ -1,3 +1,7 @@
+* {
+  --border-radius: 6px;
+}
+
 mat-card {
   display: flex;
   flex-direction: column;
@@ -18,10 +22,12 @@ mat-card-content {
   justify-content: center;
   align-items: center;
   margin-bottom: 0;
+  font-size: inherit;
 }
 
 mat-card-title {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
@@ -29,32 +35,73 @@ mat-card-title {
 .banner, .empty {
   display: flex;
   width: 270px;
-  height: 220px;
+  height: 170px;
   object-fit: contain;
   align-items: center;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .empty {
   justify-content: center;
-  background-color: white;
-  margin-bottom: 10px;
+  background-color: rgba(229, 229, 229, 1) !important;
+  cursor: default;
+  border-style: solid;
+  border-width: thin;
+  color: rgba(251, 133, 0, 1) !important;
+}
+
+.empty:hover {
+  background: rgb(231, 234, 236);
 }
 
 .text {
   color: white;
 }
 
+.mat-input-element::placeholder {
+}
+
+mat-select.input {
+  margin-bottom: 5px;
+  width: calc(274px - var(--border-radius));
+}
+
+::ng-deep .mat-select-value {
+  font-weight: 400;
+  padding: 5px ;
+}
+
+::ng-deep .select.mat-select-panel {
+  background-color: rgba(229, 229, 229, 1) !important;
+  overflow: hidden !important;
+}
+
+.option {
+  height: 40px !important;
+  padding: 5px !important;
+}
+
 .input {
-  color: rgba(251, 133, 0, 1);
-  flex-shrink: 0;
-  border: 1px solid #ffffff69;
-  background-color: transparent;
   font-family: inherit;
   font-size: inherit;
-  --border: 6px;
-  border-radius: var(--border);
-  width: calc(270px - var(--border));
+  border-radius: var(--border-radius);
+  width: calc(270px - var(--border-radius));
+  height: 30px;
+  background-color: rgba(229, 229, 229, 1) !important;
+  margin: 15px;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  padding-left: 5px;
+}
+
+.datePicker {
+  width: calc(270px - var(--border-radius));
+
+}
+
+::ng-deep .mat-form-field-label{
+  color:rgba(251, 133, 0, 1) !important;
 }
 
 .title-buttons {
@@ -74,7 +121,6 @@ mat-card-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.3em;
   overflow-wrap: break-word;
   margin: 5px 0 5px 0;
 }
@@ -91,5 +137,44 @@ mat-card-footer {
 }
 
 input:focus {
-  outline-color: #ffffff69;
+  outline: #ffffff69 1px;
+}
+
+.quantity {
+  font: inherit;
+  display: flex;
+  width: 50%;
+  border: 1px solid #ffffff69;
+  border-radius: var(--border-radius);
+  color: inherit;
+  height: 30px;
+}
+
+/* it will support chrome and firefox */
+.quantity input[type=number]::-webkit-inner-spin-button,
+.quantity input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.quantity input, .quantity button {
+  width: 50%;
+  text-align: center;
+  font-weight: 500;
+  background: inherit;
+  border: none;
+  color: inherit;
+}
+
+.quantity input {
+  outline: none;
+  border-right: 1px solid #ffffff69;
+  border-left: 1px solid #ffffff69;
+  height: 28px;
+  background-color: rgba(229, 229, 229, 1) !important;
+  color: rgb(0, 0, 0);
+}
+
+.quantity.container {
+  margin-bottom: 4px;
+  margin-top: 4px;
 }

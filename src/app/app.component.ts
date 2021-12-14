@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from './services/user.service';
+import { CurrentUserService } from './services/current-user.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +9,16 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService,
+  constructor(private userService: CurrentUserService,
               private router: Router,
               private dialog: MatDialog) {
   }
 
-  get showLoginButton() {
-    return !this.userService.user && !(this.router.url.startsWith('/login'));
+  get hasAccess() {
+    return this.userService.user;
   }
 
-  login() {
-    this.dialog.open(LoginComponent)
+  get showLoginButton() {
+    return !this.userService.user && !(this.router.url.startsWith('/login'));
   }
 }

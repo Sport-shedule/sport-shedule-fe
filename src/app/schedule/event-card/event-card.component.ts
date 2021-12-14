@@ -29,7 +29,7 @@ export class EventCardComponent implements OnInit {
   edit() {
     const a = this.dialog.open(EventCardEditorComponent, {
       data: {
-        event: this.sportEvent
+        sportEvent: this.sportEvent
       }
     });
   }
