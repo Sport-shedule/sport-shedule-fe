@@ -42,6 +42,7 @@ html::-webkit-scrollbar-thumb {
   flex-flow: row wrap;
   justify-content: space-between;
   overflow: hidden !important;
+  gap: 23px;
 }
 
 .tooltip {

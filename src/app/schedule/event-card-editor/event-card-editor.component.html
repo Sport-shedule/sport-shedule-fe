@@ -1,51 +1,66 @@
 <mat-card>
-  <mat-card-title>
-    <mat-select class="input" *ngIf="isAdding" label="Select type" [(ngModel)]="sportEvent.type" panelClass="select">
-      <mat-option class="option" *ngFor="let type of keys" [value]="type">{{ type }}</mat-option>
-    </mat-select>
-    <input autocomplete="off" matInput placeholder="Event name" [(ngModel)]="sportEvent.name" class="input" type="text">
-
-    <mat-form-field class="datePicker">
-      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="sportEvent.date">
-      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-      <ngx-mat-datetime-picker #picker>
-      </ngx-mat-datetime-picker>
-    </mat-form-field>
-
-  </mat-card-title>
   <mat-card-content>
-    <img class="banner" (click)="imageElement.click()" *ngIf="sportEvent.banner" loading="lazy"
-         [src]="'data:image/jpeg;base64,' + sportEvent.banner">
-    <button class="empty" (click)="imageElement.click()" *ngIf="!sportEvent.banner">Click to upload</button>
-    <input type="file" #imageElement (change)="selectImage($event)"
-           hidden
-           accept="image/*" style="display:none">
-    <div class="teams">
-      <div class="team">
-        <input autocomplete="off" matInput placeholder="First participant" [(ngModel)]="sportEvent.firstParticipant"
-               class="input" type="text">
-        <div class="quantity container">
-          <button (click)=dec()>-</button>
-          <input #firstScore class="quantity" min="0" [(ngModel)]="sportEvent.firstScore"
-                 type="number">
-          <button (click)=inc()>+</button>
+    <div class="column">
+      <mat-form-field *ngIf="isAdding" class="input">
+        <mat-select placeholder="Event type" [(ngModel)]="sportEvent.type"
+                    panelClass="select">
+          <mat-option class="option" *ngFor="let type of keys" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <input autocomplete="off" matInput placeholder="Event name" [(ngModel)]="sportEvent.name" type="text">
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="sportEvent.date">
+        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker>
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      <img class="banner" (click)="imageElement.click()" *ngIf="sportEvent.banner" loading="lazy"
+           [src]="'data:image/jpeg;base64,' + sportEvent.banner">
+      <button class="empty" (click)="imageElement.click()" *ngIf="!sportEvent.banner">Click to upload</button>
+      <input type="file" #imageElement (change)="selectImage($event)"
+             hidden
+             accept="image/*" style="display:none">
+    </div>
+
+    <div class="column">
+      <div class="teams">
+        <div class="team">
+          <mat-form-field class="input">
+            <input autocomplete="off" matInput placeholder="First participant" [(ngModel)]="sportEvent.firstParticipant"
+                   type="text">
+          </mat-form-field>
+          <div class="quantity container">
+            <button (click)=dec()>-</button>
+            <input class="quantity" min="0" [(ngModel)]="sportEvent.firstScore"
+                   type="number">
+            <button (click)=inc()>+</button>
+          </div>
         </div>
-      </div>
-      <div class="team">
-        <div class="quantity container">
-          <button (click)=dec2()>-</button>
-          <input #secondScore class="quantity" min="0" [(ngModel)]="sportEvent.secondScore"
-                 type="number">
-          <button (click)=inc2()>+</button>
+
+        <div class="team">
+          <mat-form-field class="input">
+            <input autocomplete="off" matInput placeholder="Second score" [(ngModel)]="sportEvent.secondParticipant"
+                   type="text">
+          </mat-form-field>
+          <div class="quantity container">
+            <button (click)=dec2()>-</button>
+            <input class="quantity" min="0" [(ngModel)]="sportEvent.secondScore"
+                   type="number">
+            <button (click)=inc2()>+</button>
+          </div>
         </div>
-        <input autocomplete="off" matInput placeholder="Second score" [(ngModel)]="sportEvent.secondParticipant"
-               class="input" type="text">
       </div>
     </div>
+
   </mat-card-content>
   <mat-card-footer>
     <button mat-button (click)="cancel()">
-      Cancel
+      Reset
     </button>
     <button mat-button (click)="save()">
       Save
