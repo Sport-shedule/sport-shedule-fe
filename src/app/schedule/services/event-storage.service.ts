@@ -1,53 +1,68 @@
-import { SportEvent } from '../schedule.component';
-import { OnInit } from '@angular/core';
+import { Event } from '../../models/event';
+import { Category } from '../../models/category';
 
 export class EventStorageService {
-  events: SportEvent[];
-  footballEvents: any[];
-  hockeyEvents: any[];
-  basketEvents: any[];
-  tennisEvents: any[];
+  categories: Category[];
 
   constructor() {
-    this.events = [
-      new SportEvent('football', 'football1 grn wegn wlrng wrlneg lrewlgn ewr;g nrewg nwrel jnewrlg nkj', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football2', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football3g', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football4', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football5', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football6', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football7', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football8', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('football', 'football9', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('basketball', 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('basketball', 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('basketball', 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('basketball', 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('basketball', 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('basketball', 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('tennis', 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
-      new SportEvent('hockey', 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4)
+    const f = [
+      new Event(0, 'football1 grn wegn wlrng wrlneg lrewlgn ewr;g nrewg nwrel jnewrlg nkj', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football2', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football3g', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football4', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football5', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football6', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football7', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football8', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(0, 'football9', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4)
     ];
-  }
+    const b = [new Event(1, 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(1, 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(1, 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(1, 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(1, 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
+      new Event(1, 'basketball', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4)
+    ];
+    const h = [
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(2, 'hockey', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4)];
+    const t = [
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4),
+      new Event(3, 'tennis', '2021-12-08T12:12:12', 'йцуйцуйцу', 13, 'пупукпук', 4)
+    ];
 
-  refresh() {
-    this.footballEvents = this.events.filter(_ => _.type.toLowerCase() == 'football');
-    this.basketEvents = this.events.filter(_ => _.type.toLowerCase() == 'basketball');
-    this.tennisEvents = this.events.filter(_ => _.type.toLowerCase() == 'tennis');
-    this.hockeyEvents = this.events.filter(_ => _.type.toLowerCase() == 'hockey');
+    const ff = new Category();
+    ff.id = 0;
+    ff.name = 'Football';
+    ff.events = f;
+
+    const bb = new Category();
+    bb.id = 1;
+    bb.name = 'Basketball';
+    bb.events = b;
+
+    const hh = new Category();
+    hh.id = 2;
+    hh.name = 'Hockey';
+    hh.events = h;
+
+    const tt = new Category();
+    tt.id = 3;
+    tt.name = 'Tennis';
+    tt.events = t;
+
+    this.categories = [ff, bb, hh, tt]
   }
 }

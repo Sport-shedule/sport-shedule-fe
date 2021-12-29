@@ -13,13 +13,24 @@
   margin: 0 3px 16px 3px;
 }
 
-.toTheTop {
+.buttons {
+  display: flex;
+  flex-direction: column;
   position: fixed;
+  bottom: 10%;
+  right: 0.5%;
+  z-index: 999;
+}
+
+.toTheTop {
+  border-radius: 10px;
   bottom: 10%;
   right: 5%;
   z-index: 999;
   transition: opacity .5s linear;
   background-color: rgba(2, 48, 71, 1);
   color: rgba(251, 133, 0, 1);
-  font-size: 1.5em;
+  font-size: 1em;
 }
+
+

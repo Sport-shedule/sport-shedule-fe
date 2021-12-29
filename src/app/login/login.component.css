@@ -62,5 +62,7 @@ mat-card {
 button {
   width: 70%;
   margin-top: 10px;
+  color: inherit;
+  background-color: inherit;
 }
 

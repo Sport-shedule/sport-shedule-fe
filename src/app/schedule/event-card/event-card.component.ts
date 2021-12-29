@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SportEvent } from '../schedule.component';
 import { EventStorageService } from '../services/event-storage.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EventCardEditorComponent } from '../event-card-editor/event-card-editor.component';
+import { Event } from '../../models/event';
+import { DataSourceService } from '../../services/data-source.service';
 
 @Component({
   selector: 'app-event-card',
@@ -11,19 +12,25 @@ import { EventCardEditorComponent } from '../event-card-editor/event-card-editor
 })
 export class EventCardComponent implements OnInit {
 
-  @Input() sportEvent: SportEvent;
+  @Input() sportEvent: Event;
 
   constructor(private storage: EventStorageService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private dataSource: DataSourceService) {
   }
 
   ngOnInit(): void {
   }
 
   delete() {
-    const index = this.storage.events.indexOf(this.sportEvent);
-    this.storage.events.splice(index, 1);
-    this.storage.refresh();
+    /*this.dataSource.deleteEvent(this.sportEvent.id).subscribe(_ => {
+      const category = this.storage.categories.find(_ => _.id == this.sportEvent.categoryId);
+      const index = category.events.indexOf(this.sportEvent);
+      category.events.splice(index, 1);
+    })*/
+    const category = this.storage.categories.find(_ => _.id == this.sportEvent.categoryId);
+    const index = category.events.indexOf(this.sportEvent);
+    category.events.splice(index, 1);
   }
 
   edit() {

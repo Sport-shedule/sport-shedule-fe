@@ -11,18 +11,20 @@ import { EventCardEditorComponent } from './event-card-editor/event-card-editor.
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { DataSourceService } from './schedule.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   NgxMatDatetimePickerModule,
   NgxMatNativeDateModule,
   NgxMatTimepickerModule
 } from '@angular-material-components/datetime-picker';
+import { DataSourceService } from '../services/data-source.service';
+import { CategoryEditorComponent } from './category-editor/category-editor.component';
 
 @NgModule({
   declarations: [
     EventCardComponent,
-    EventCardEditorComponent
+    EventCardEditorComponent,
+    CategoryEditorComponent
   ],
   imports: [
     ScheduleRoutingModule,
@@ -41,7 +43,8 @@ import {
   ],
   exports: [
     EventCardComponent,
-    EventCardEditorComponent
+    EventCardEditorComponent,
+    CategoryEditorComponent
   ],
   providers: [
     EventStorageService,

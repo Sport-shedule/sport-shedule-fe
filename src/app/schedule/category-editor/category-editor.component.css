@@ -1,0 +1,55 @@
+* {
+  --border-radius: 6px;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(2, 48, 71, 1);
+  color: rgba(251, 133, 0, 1);
+  border-radius: 15px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  font-size: inherit;
+}
+
+.input {
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: var(--border-radius);
+  width: calc(270px - var(--border-radius));
+  height: 30px;
+  margin: 15px;
+  font-weight: 400;
+  color: rgba(229, 229, 229, 1);
+  padding-left: 5px;
+}
+
+::ng-deep .mat-form-field-label {
+  color: rgba(251, 133, 0, 0.8) !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+  background-color: rgba(251, 133, 0, 0.8) !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: rgba(251, 133, 0, 0.8) !important;
+}
+
+mat-card-footer {
+  display: flex;
+  margin: 10px 0 0 0;
+  justify-content: flex-end;
+}
+
+input:focus {
+  outline: #ffffff69 1px;
+}
+

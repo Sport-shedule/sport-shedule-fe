@@ -5,17 +5,17 @@
           class="title-name">{{ sportEvent.name }}</span>
   </mat-card-title>
   <mat-card-content>
-    <img class="banner" *ngIf="sportEvent.banner" loading="lazy" [src]="'data:image/jpeg;base64,' + sportEvent.banner">
-    <div class="empty" *ngIf="!sportEvent.banner">Banner</div>
+    <img class="banner" *ngIf="sportEvent.imageBase64" loading="lazy" [src]="'data:image/jpeg;base64,' + sportEvent.imageBase64">
+    <div class="empty" *ngIf="!sportEvent.imageBase64">Banner</div>
 
     <div class="teams">
       <div class="team">
-        <div>{{ sportEvent.firstParticipant }}</div>
-        <div class="score">{{ sportEvent.firstScore }}</div>
+        <span>{{ sportEvent.firstPlayer.name }}</span>
+        <span class="score">{{ sportEvent.score.scorePlayer1 }}</span>
       </div>
       <div class="team">
-        <div class="score">{{ sportEvent.secondScore }}</div>
-        <div>{{ sportEvent.secondParticipant }}</div>
+        <span class="score">{{ sportEvent.score.scorePlayer2 }}</span>
+        <span>{{ sportEvent.secondPlayer.name }}</span>
       </div>
     </div>
   </mat-card-content>

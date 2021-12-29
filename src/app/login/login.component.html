@@ -7,12 +7,12 @@
     </mat-form-field>
 
     <mat-form-field class="input">
-      <input autocomplete="off" matInput name="password" placeholder="Password" [(ngModel)]="model.password"
+      <input autocomplete="off" matInput name="password" required placeholder="Password" [(ngModel)]="model.password"
              type="password">
     </mat-form-field>
 
 
-    <button [disabled]="!f.valid || f.pristine || loading" mat-button type="submit">
+    <button [disabled]="!f.valid || f.pristine || loading" mat-stroked-button type="submit">
       Log In
     </button>
   </form>

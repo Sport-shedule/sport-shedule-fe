@@ -15,9 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScheduleModule } from './schedule/schedule.module';
 import { AuthenticationService } from './services/authentication.service';
-import { OriginUrlService } from './services/origin-url.service';
 import { ApiService } from './services/api.service';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
@@ -43,7 +42,6 @@ import { AuthGuard } from './services/auth.guard';
   providers: [
     CurrentUserService,
     AuthenticationService,
-    OriginUrlService,
     ApiService,
     AuthGuard
   ],

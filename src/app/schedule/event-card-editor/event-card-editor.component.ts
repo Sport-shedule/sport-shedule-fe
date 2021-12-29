@@ -1,7 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { SportEvent } from '../schedule.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EventStorageService } from '../services/event-storage.service';
+import { Event } from '../../models/event';
+import { Category } from '../../models/category';
+import { DataSourceService } from '../../services/data-source.service';
+
+function jsonCopy(src: any) {
+  return JSON.parse(JSON.stringify(src));
+}
 
 @Component({
   selector: 'app-event-card-editor',
@@ -9,18 +15,20 @@ import { EventStorageService } from '../services/event-storage.service';
   styleUrls: ['./event-card-editor.component.css']
 })
 export class EventCardEditorComponent implements OnInit {
-  sportEvent: SportEvent;
-  keys: string[] = ['Football', 'Hockey', 'Basketball', 'Tennis'];
+  sportEvent: Event;
   isAdding: boolean;
+  categories: Category[] = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) private dialogData: any,
               private dialogRef: MatDialogRef<EventCardEditorComponent>,
-              private storage: EventStorageService) {
+              private storage: EventStorageService,
+              private dataSource: DataSourceService) {
     this.isAdding = dialogData.isAdding;
-    this.sportEvent = Object.assign({}, dialogData?.sportEvent);
+    this.sportEvent = jsonCopy(dialogData.sportEvent);
   }
 
   ngOnInit(): void {
+    this.categories = this.dataSource.getSportEventTypes();
   }
 
   selectImage(e: any) {
@@ -29,7 +37,7 @@ export class EventCardEditorComponent implements OnInit {
     reader.onload = () => {
       const base64 = btoa(reader.result as string);
       this.onChange(base64);
-      ref.sportEvent.banner = base64;
+      ref.sportEvent.imageBase64 = base64;
     };
     const inputFile = e.target.files[0];
 
@@ -41,34 +49,38 @@ export class EventCardEditorComponent implements OnInit {
 
   save() {
     if (this.isAdding) {
-      this.storage.events.push(this.sportEvent);
-      this.storage.refresh();
+      this.storage.categories.find(_ => _.id == this.sportEvent.categoryId).events.push(this.sportEvent);
+      /*this.dataSource.addEvent(this.sportEvent).subscribe(_ => {
+        this.storage.categories.find(_ => _.id == this.sportEvent.categoryId).events.push(_);
+      });*/
       this.dialogRef.close();
       return;
     }
-    const b = this.storage.events.find(_ => _ == this.dialogData.sportEvent);
+    const b = this.storage.categories.find(_ => _.id == this.sportEvent.categoryId).events.find(_ => _ == this.dialogData.sportEvent);
+    /*this.dataSource.editEvent(this.sportEvent).subscribe(_ => {
+        b?.update(_);
+      });*/
     b?.update(this.sportEvent);
-    this.storage.refresh();
     this.dialogRef.close();
   }
 
   cancel() {
-    this.sportEvent = Object.assign({}, this.dialogData.sportEvent);
+    this.sportEvent = jsonCopy(this.dialogData.sportEvent);
   }
 
   inc() {
-    this.sportEvent.firstScore++;
+    this.sportEvent.score.scorePlayer1++;
   }
 
   dec() {
-    this.sportEvent.firstScore--;
+    this.sportEvent.score.scorePlayer1--;
   }
 
   inc2() {
-    this.sportEvent.secondScore++;
+    this.sportEvent.score.scorePlayer2++;
   }
 
   dec2() {
-    this.sportEvent.secondScore--;
+    this.sportEvent.score.scorePlayer2--;
   }
 }

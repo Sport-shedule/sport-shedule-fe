@@ -43,7 +43,7 @@ mat-card-title {
 }
 
 .text {
-  color: white;
+  color: rgba(229, 229, 229, 1);
 }
 
 .title-name {
