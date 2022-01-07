@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
 
-    this.authenticationService.login(this.model.username, this.model.password);
+    /*this.authenticationService.login(this.model.username, this.model.password);
     this.router.navigate([this.returnUrl]);
-    this.loading = false;
+    this.loading = false;*/
 
-    /*this.authenticationService
+    this.authenticationService
       .login(this.model.username, this.model.password)
       .subscribe(
         () => {
@@ -43,6 +43,6 @@ export class LoginComponent implements OnInit {
           this.error = _.error;
           this.loading = false;
         },
-        () => this.loading = false);*/
+        () => this.loading = false);
   }
 }
