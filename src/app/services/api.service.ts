@@ -1,21 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, first, map } from 'rxjs/operators';
 import { EMPTY, Observable, throwError as _throw } from 'rxjs';
 import { CurrentUserService } from './current-user.service';
 import { environment } from '../../environments/environment.prod';
-
-@Injectable()
-export class APIInterceptor implements HttpInterceptor {
-  private API_URL = environment.apiUrl;
-
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    const apiReq = req.clone({ url: `${this.API_URL}${req.url}` });
-    return next.handle(apiReq);
-  }
-}
 
 @Injectable()
 export class ApiService {

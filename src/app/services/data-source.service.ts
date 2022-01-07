@@ -12,25 +12,25 @@ export class DataSourceService {
 
   getSportEventTypes(): Category[] {
     let result = [];
-    this.apiService.get<Category[]>(`admin/category/all`).subscribe(_ => result = _);
+    this.apiService.get<Category[]>(`/admin/category/all`).subscribe(_ => result = _);
     return result;
     /*return this.storage.categories;*/
   }
 
   addEvent(sportEvent: Event): Observable<Event> {
-    return this.apiService.post<Event>(`admin/event`, sportEvent);
+    return this.apiService.post<Event>(`/admin/event`, sportEvent);
   }
 
   editEvent(sportEvent: Event): Observable<Event> {
-    return this.apiService.put<Event>(`admin/editEvent`, sportEvent);
+    return this.apiService.put<Event>(`/admin/editEvent`, sportEvent);
   }
 
   deleteEvent(id: number): Observable<Event> {
-    return this.apiService.delete(`admin/event?id=${id}`);
+    return this.apiService.delete(`/admin/event?id=${id}`);
   }
 
   addCategory(category: Category) {
-    this.apiService.post(`admin/category`, category);
+    this.apiService.post(`/admin/category`, category);
   }
 }
 

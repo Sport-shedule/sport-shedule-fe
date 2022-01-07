@@ -9,7 +9,6 @@ import { environment } from '../../environments/environment.prod';
 export class AuthenticationService {
   subject: Subject<UserAccount> = new Subject<UserAccount>();
   API_URL = environment.apiUrl;
-
   constructor(private http: HttpClient) {
   }
 
@@ -19,7 +18,7 @@ export class AuthenticationService {
     user.password = password;
     //localStorage.setItem('currentUser', JSON.stringify(user));
     //this.subject.next(user);
-    return this.http.post<any>(`${ this.API_URL }login`, { username: username, password: password })
+    return this.http.post<any>(`${this.API_URL}/login`, { username: username, password: password })
       .pipe(first(),
         map((response: Object) => {
           // успешно если в ответе есть jwt Токен
