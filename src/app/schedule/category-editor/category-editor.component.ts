@@ -19,8 +19,8 @@ export class CategoryEditorComponent {
   }
 
   save() {
-    this.storage.categories.push(this.category);
-    /*this.dataSource.addCategory(this.category);*/
+    //this.storage.categories.push(this.category);
+    this.dataSource.addCategory(this.category);
     this.dialogRef.close();
   }
 

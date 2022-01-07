@@ -17,8 +17,4 @@ export class AppComponent {
   get hasAccess() {
     return this.userService.user;
   }
-
-  get showLoginButton() {
-    return !this.userService.user && !(this.router.url.startsWith('/login'));
-  }
 }
