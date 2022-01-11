@@ -26,9 +26,9 @@ export class CurrentUserService implements OnDestroy {
 
     const item  = localStorage.getItem('currentUser') as string;
     const user = JSON.parse(item);
-    /*if (!user || this.tokenExpired(user.token)) {
+    if (!user || this.tokenExpired(user.token)) {
       return;
-    }*/
+    }
 
     this.user = user;
   }
