@@ -1,11 +1,10 @@
-import { Event } from '../../models/event';
 import { Category } from '../../models/category';
 
 export class EventStorageService {
   categories: Category[];
 
   constructor() {
-    const f = [
+    /*const f = [
       new Event(0, 'football1 grn wegn wlrng wrlneg lrewlgn ewr;g nrewg nwrel jnewrlg nkj', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
       new Event(0, 'football2', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
       new Event(0, 'football3g', '2021-12-08T12:12:12', 'йцуйцуйцу', 3, 'пупукпук', 4),
@@ -63,6 +62,6 @@ export class EventStorageService {
     tt.name = 'Tennis';
     tt.events = t;
 
-    this.categories = [ff, bb, hh, tt]
+    this.categories = [ff, bb, hh, tt]*/
   }
 }

@@ -1,14 +1,14 @@
 <mat-card>
   <mat-card-content>
     <mat-form-field class="input">
-      <input matInput autocomplete="off" [placeholder]="'Category name'" [(ngModel)]="category.name">
+      <input [(ngModel)]="category.name" [placeholder]="'Category name'" autocomplete="off" matInput>
     </mat-form-field>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button (click)="cancel()">
+    <button (click)="cancel()" mat-button>
       Reset
     </button>
-    <button mat-button [disabled]="category.name === ''" (click)="save()">
+    <button (click)="save()" [disabled]="category.name === ''" mat-button>
       Save
     </button>
   </mat-card-footer>

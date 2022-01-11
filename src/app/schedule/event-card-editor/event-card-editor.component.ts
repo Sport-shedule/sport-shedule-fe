@@ -25,10 +25,10 @@ export class EventCardEditorComponent implements OnInit {
               private dataSource: DataSourceService) {
     this.isAdding = dialogData.isAdding;
     this.sportEvent = jsonCopy(dialogData.sportEvent);
+    this.categories = storage.categories;
   }
 
   ngOnInit(): void {
-    this.categories = this.dataSource.getSportEventTypes();
   }
 
   selectImage(e: any) {
@@ -37,7 +37,7 @@ export class EventCardEditorComponent implements OnInit {
     reader.onload = () => {
       const base64 = btoa(reader.result as string);
       this.onChange(base64);
-      ref.sportEvent.imageBase64 = base64;
+      ref.sportEvent.images[0] = base64;
     };
     const inputFile = e.target.files[0];
 
@@ -49,18 +49,11 @@ export class EventCardEditorComponent implements OnInit {
 
   save() {
     if (this.isAdding) {
-      this.storage.categories.find(_ => _.id == this.sportEvent.categoryId).events.push(this.sportEvent);
-      /*this.dataSource.addEvent(this.sportEvent).subscribe(_ => {
-        this.storage.categories.find(_ => _.id == this.sportEvent.categoryId).events.push(_);
-      });*/
+      this.dataSource.addEvent(this.sportEvent).subscribe(_ => _);
       this.dialogRef.close();
       return;
     }
-    const b = this.storage.categories.find(_ => _.id == this.sportEvent.categoryId).events.find(_ => _ == this.dialogData.sportEvent);
-    /*this.dataSource.editEvent(this.sportEvent).subscribe(_ => {
-        b?.update(_);
-      });*/
-    b?.update(this.sportEvent);
+    this.dataSource.editEvent(this.sportEvent).subscribe(_ => _);
     this.dialogRef.close();
   }
 

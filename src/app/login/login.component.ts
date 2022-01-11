@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CurrentUserService, UserAccount } from '../services/current-user.service';
+import { CurrentUserService } from '../services/current-user.service';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -28,10 +28,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
-
-    /*this.authenticationService.login(this.model.username, this.model.password);
-    this.router.navigate([this.returnUrl]);
-    this.loading = false;*/
 
     this.authenticationService
       .login(this.model.username, this.model.password)

@@ -2,42 +2,42 @@
   <mat-card-content>
     <div class="column">
       <mat-form-field *ngIf="isAdding" class="input">
-        <mat-select placeholder="Event type" [(ngModel)]="sportEvent.categoryId"
-                    panelClass="select">
-          <mat-option class="option" *ngFor="let category of categories"
-                      [value]="category.id">{{ category.name }}</mat-option>
+        <mat-select [(ngModel)]="sportEvent.categoryId" panelClass="select"
+                    placeholder="Event type">
+          <mat-option *ngFor="let category of categories" [value]="category.id"
+                      class="option">{{ category.name }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="input">
-        <input autocomplete="off" matInput placeholder="Event name" [(ngModel)]="sportEvent.name" type="text">
+        <input [(ngModel)]="sportEvent.name" autocomplete="off" matInput placeholder="Event name" type="text">
       </mat-form-field>
 
       <mat-form-field class="input">
-        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [(ngModel)]="sportEvent.date">
-        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+        <input [(ngModel)]="sportEvent.date" [ngxMatDatetimePicker]="picker" matInput placeholder="Choose a date">
+        <mat-datepicker-toggle [for]="$any(picker)" matSuffix></mat-datepicker-toggle>
         <ngx-mat-datetime-picker #picker>
         </ngx-mat-datetime-picker>
       </mat-form-field>
 
-      <img class="banner" (click)="imageElement.click()" *ngIf="sportEvent.imageBase64" loading="lazy"
-           [src]="'data:image/jpeg;base64,' + sportEvent.imageBase64">
-      <button class="empty" (click)="imageElement.click()" *ngIf="!sportEvent.imageBase64">Click to upload</button>
-      <input type="file" #imageElement (change)="selectImage($event)"
+      <img (click)="imageElement.click()" *ngIf="sportEvent.images.length > 0" [src]="'data:image/jpeg;base64,' + sportEvent?.images[0]" class="banner"
+           loading="lazy">
+      <button (click)="imageElement.click()" *ngIf="sportEvent.images.length < 1" class="empty">Click to upload</button>
+      <input #imageElement (change)="selectImage($event)" accept="image/*"
              hidden
-             accept="image/*" style="display:none">
+             style="display:none" type="file">
     </div>
 
     <div class="column">
       <div class="teams">
         <div class="team">
           <mat-form-field class="input">
-            <input autocomplete="off" matInput placeholder="First player" [(ngModel)]="sportEvent.firstPlayer.name"
+            <input [(ngModel)]="sportEvent.firstPlayer.name" autocomplete="off" matInput placeholder="First player"
                    type="text">
           </mat-form-field>
           <div class="quantity container">
             <button (click)=dec()>-</button>
-            <input class="quantity" [(ngModel)]="sportEvent.score.scorePlayer1"
+            <input [(ngModel)]="sportEvent.score.scorePlayer1" class="quantity"
                    type="number">
             <button (click)=inc()>+</button>
           </div>
@@ -45,12 +45,12 @@
 
         <div class="team">
           <mat-form-field class="input">
-            <input autocomplete="off" matInput placeholder="Second player" [(ngModel)]="sportEvent.secondPlayer.name"
+            <input [(ngModel)]="sportEvent.secondPlayer.name" autocomplete="off" matInput placeholder="Second player"
                    type="text">
           </mat-form-field>
           <div class="quantity container">
             <button (click)=dec2()>-</button>
-            <input class="quantity" [(ngModel)]="sportEvent.score.scorePlayer2"
+            <input [(ngModel)]="sportEvent.score.scorePlayer2" class="quantity"
                    type="number">
             <button (click)=inc2()>+</button>
           </div>
@@ -60,10 +60,10 @@
 
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button (click)="cancel()">
+    <button (click)="cancel()" mat-button>
       Reset
     </button>
-    <button mat-button (click)="save()">
+    <button (click)="save()" mat-button>
       Save
     </button>
   </mat-card-footer>

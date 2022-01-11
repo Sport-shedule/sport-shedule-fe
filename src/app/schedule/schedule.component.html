@@ -1,11 +1,11 @@
-<mat-tab-group class="tabGroup" >
-  <mat-tab label="{{ category.name }}" *ngFor="let category of categories">
-    <div class="container" *ngFor="let event of getEvents(category)">
+<mat-tab-group class="tabGroup">
+  <mat-tab *ngFor="let category of storage.categories" label="{{ category.name }}">
+    <div *ngFor="let event of getEvents(category)" class="container">
       <app-event-card [sportEvent]="event"></app-event-card>
     </div>
   </mat-tab>
 </mat-tab-group>
 <div class="buttons">
-  <button mat-raised-button (click)="addEvent()" class="toTheTop">Add Event</button>
-  <button mat-raised-button (click)="addCategory()" class="toTheTop">Add Category</button>
+  <button (click)="addEvent()" class="toTheTop" mat-raised-button>Add Event</button>
+  <button (click)="addCategory()" class="toTheTop" mat-raised-button>Add Category</button>
 </div>

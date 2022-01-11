@@ -1,7 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EventStorageService } from '../services/event-storage.service';
-import { Event } from '../../models/event';
 import { Category } from '../../models/category';
 import { DataSourceService } from '../../services/data-source.service';
 
@@ -19,8 +18,7 @@ export class CategoryEditorComponent {
   }
 
   save() {
-    //this.storage.categories.push(this.category);
-    this.dataSource.addCategory(this.category);
+    this.dataSource.addCategory(this.category).subscribe(_ => _);
     this.dialogRef.close();
   }
 

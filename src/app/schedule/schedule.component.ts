@@ -21,26 +21,35 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories = this.dataSource.getSportEventTypes();
+    this.dataSource.getSportEventTypes().subscribe(_ => {
+      this.storage.categories = _;
+    });
   }
 
-  getEvents(type: Category) {
-    return type.events;
+  getEvents(category: Category) {
+    return category.events;
   }
 
   addEvent() {
-    this.dialog.open(EventCardEditorComponent, {
+    const dialog = this.dialog.open(EventCardEditorComponent, {
       data: {
         sportEvent: new Event(),
         isAdding: true
       }
     });
+    dialog.afterClosed().subscribe(_ => {
+      this.dataSource.getSportEventTypes().subscribe(_ => {
+        this.storage.categories = _;
+      });
+    });
   }
 
   addCategory() {
-    const dialog = this.dialog.open(CategoryEditorComponent)
+    const dialog = this.dialog.open(CategoryEditorComponent);
     dialog.afterClosed().subscribe(_ => {
-      this.dataSource.getSportEventTypes();
-    })
+      this.dataSource.getSportEventTypes().subscribe(_ => {
+        this.storage.categories = _;
+      });
+    });
   }
 }

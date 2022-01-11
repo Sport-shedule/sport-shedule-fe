@@ -1,4 +1,4 @@
-import { Score } from '../schedule/score';
+import { Score } from './score';
 import { Player } from './player';
 
 export class Event {
@@ -9,7 +9,7 @@ export class Event {
   score: Score;
   firstPlayer: Player;
   secondPlayer: Player;
-  imageBase64: string;
+  images: string[] = [];
 
   constructor(categoryId: number = 0, name: string = '', date: string = '', firstParticipant: string = '', firstScore: number = 0,
               secondParticipant: string = '', secondScore: number = 0, banner: string = '') {
@@ -31,6 +31,6 @@ export class Event {
     this.firstPlayer = event.firstPlayer;
     this.score = event.score;
     this.secondPlayer = event.secondPlayer;
-    this.imageBase64 = event.imageBase64;
+    this.images = event.images;
   }
 }

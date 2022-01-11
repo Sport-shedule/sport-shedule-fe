@@ -24,7 +24,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(
       routes,
-      { enableTracing: false , scrollPositionRestoration: 'enabled'},
+      { enableTracing: false, scrollPositionRestoration: 'enabled' },
     )
   ],
   exports: [

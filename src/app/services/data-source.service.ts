@@ -10,11 +10,8 @@ export class DataSourceService {
   constructor(public storage: EventStorageService, private apiService: ApiService) {
   }
 
-  getSportEventTypes(): Category[] {
-    let result = [];
-    this.apiService.get<Category[]>(`/admin/category/all`).subscribe(_ => result = _);
-    return result;
-    /*return this.storage.categories;*/
+  getSportEventTypes(): Observable<Category[]> {
+    return this.apiService.get<Category[]>(`/admin/category/all`);
   }
 
   addEvent(sportEvent: Event): Observable<Event> {
@@ -26,11 +23,11 @@ export class DataSourceService {
   }
 
   deleteEvent(id: number): Observable<Event> {
-    return this.apiService.delete(`/admin/event?id=${id}`);
+    return this.apiService.delete(`/admin/event/${ id }`);
   }
 
-  addCategory(category: Category) {
-    this.apiService.post(`/admin/category`, category);
+  addCategory(category: Category): Observable<Category> {
+    return this.apiService.post(`/admin/category`, category);
   }
 }
 

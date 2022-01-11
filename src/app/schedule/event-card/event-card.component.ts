@@ -23,21 +23,23 @@ export class EventCardComponent implements OnInit {
   }
 
   delete() {
-    /*this.dataSource.deleteEvent(this.sportEvent.id).subscribe(_ => {
+    this.dataSource.deleteEvent(this.sportEvent.id).subscribe(_ => {
       const category = this.storage.categories.find(_ => _.id == this.sportEvent.categoryId);
       const index = category.events.indexOf(this.sportEvent);
       category.events.splice(index, 1);
-    })*/
-    const category = this.storage.categories.find(_ => _.id == this.sportEvent.categoryId);
-    const index = category.events.indexOf(this.sportEvent);
-    category.events.splice(index, 1);
+    });
   }
 
   edit() {
-    const a = this.dialog.open(EventCardEditorComponent, {
+    const dialog = this.dialog.open(EventCardEditorComponent, {
       data: {
         sportEvent: this.sportEvent
       }
+    });
+    dialog.afterClosed().subscribe(_ => {
+      this.dataSource.getSportEventTypes().subscribe(_ => {
+        this.storage.categories = _;
+      });
     });
   }
 }

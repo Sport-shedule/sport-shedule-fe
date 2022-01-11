@@ -1,12 +1,13 @@
 <mat-card>
   <mat-card-title>
-    <span [matTooltip]="sportEvent.name" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip'"
-          [matTooltipDisabled]="sportEvent.name.length < 20" [matTooltipShowDelay]="0"
+    <span [matTooltipClass]="'tooltip'" [matTooltipDisabled]="sportEvent.name.length < 20" [matTooltipPosition]="'above'"
+          [matTooltipShowDelay]="0" [matTooltip]="sportEvent.name"
           class="title-name">{{ sportEvent.name }}</span>
   </mat-card-title>
   <mat-card-content>
-    <img class="banner" *ngIf="sportEvent.imageBase64" loading="lazy" [src]="'data:image/jpeg;base64,' + sportEvent.imageBase64">
-    <div class="empty" *ngIf="!sportEvent.imageBase64">Banner</div>
+    <img *ngIf="sportEvent.images[0]" [src]="'data:image/jpeg;base64,' + sportEvent?.images[0]" class="banner"
+         loading="lazy">
+    <div *ngIf="!sportEvent.images[0]" class="empty">Banner</div>
 
     <div class="teams">
       <div class="team">
@@ -20,11 +21,11 @@
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button (click)="edit()">
+    <button (click)="edit()" mat-button>
       Edit
       <!--<mat-icon [inline]="true">edit_outline</mat-icon>-->
     </button>
-    <button mat-button (click)="delete()">
+    <button (click)="delete()" mat-button>
       Delete
       <!--<mat-icon [inline]="true">delete_outline</mat-icon>-->
     </button>

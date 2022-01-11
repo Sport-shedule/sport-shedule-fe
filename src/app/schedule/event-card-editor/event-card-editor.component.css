@@ -71,7 +71,7 @@ mat-select.input {
 
 ::ng-deep .mat-select-value {
   font-weight: 400;
-  color:  rgba(229, 229, 229, 1);
+  color: rgba(229, 229, 229, 1);
 }
 
 ::ng-deep .select.mat-select-panel {
