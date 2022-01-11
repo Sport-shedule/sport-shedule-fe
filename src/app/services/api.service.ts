@@ -18,7 +18,7 @@ export class ApiService {
     // create authorization header with jwt token
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      return new HttpHeaders().set('Authorization', 'Bearer ' + currentUser.token);
+      return new HttpHeaders().set('Authorization', 'Bearer_' + currentUser.token);
     }
   }
 
