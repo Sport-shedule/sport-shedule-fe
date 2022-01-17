@@ -1,5 +1,5 @@
 <mat-tab-group class="tabGroup">
-  <mat-tab *ngFor="let category of storage.categories" label="{{ category.name }}">
+  <mat-tab *ngFor="let category of storage.categories" label="{{ titleCaseWord(category.name)}}">
     <div *ngFor="let event of getEvents(category)" class="container">
       <app-event-card [sportEvent]="event"></app-event-card>
     </div>

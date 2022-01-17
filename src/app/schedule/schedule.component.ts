@@ -59,4 +59,9 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     this.unsubscribeSubject.next();
     this.unsubscribeSubject.complete();
   }
+
+  titleCaseWord(word: string) {
+    if (!word) return word;
+    return word[0].toUpperCase() + word.substr(1).toLowerCase();
+  }
 }
