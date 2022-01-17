@@ -32,7 +32,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   getEvents(category: Category) {
-    return category.events;
+    return category.events.sort(this.compareByDate);
   }
 
   addEvent() {
@@ -63,5 +63,15 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   titleCaseWord(word: string) {
     if (!word) return word;
     return word[0].toUpperCase() + word.substr(1).toLowerCase();
+  }
+
+  private compareByDate(a: Event, b: Event) {
+    if (a.date > b.date) {
+      return 1;
+    }
+    if (a.date < b.date) {
+      return -1;
+    }
+    return 0;
   }
 }
