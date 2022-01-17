@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventStorageService } from './services/event-storage.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EventCardEditorComponent } from './event-card-editor/event-card-editor.component';
@@ -6,14 +6,17 @@ import { Event } from '../models/event';
 import { Category } from '../models/category';
 import { DataSourceService } from '../services/data-source.service';
 import { CategoryEditorComponent } from './category-editor/category-editor.component';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
-export class ScheduleComponent implements OnInit {
+export class ScheduleComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
+  private unsubscribeSubject = new Subject<void>();
 
   constructor(public storage: EventStorageService,
               private dataSource: DataSourceService,
@@ -21,7 +24,9 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource.getSportEventTypes().subscribe(_ => {
+    this.dataSource.getSportEventTypes()
+      .pipe(takeUntil(this.unsubscribeSubject))
+      .subscribe(_ => {
       this.storage.categories = _;
     });
   }
@@ -37,19 +42,21 @@ export class ScheduleComponent implements OnInit {
         isAdding: true
       }
     });
-    dialog.afterClosed().subscribe(_ => {
-      this.dataSource.getSportEventTypes().subscribe(_ => {
-        this.storage.categories = _;
-      });
-    });
   }
 
   addCategory() {
     const dialog = this.dialog.open(CategoryEditorComponent);
-    dialog.afterClosed().subscribe(_ => {
-      this.dataSource.getSportEventTypes().subscribe(_ => {
-        this.storage.categories = _;
+    dialog.afterClosed()
+      .pipe(takeUntil(this.unsubscribeSubject))
+      .subscribe(_ => {
+        this.dataSource.getSportEventTypes().subscribe(_ => {
+          this.storage.categories = _;
+        });
       });
-    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeSubject.next();
+    this.unsubscribeSubject.complete();
   }
 }

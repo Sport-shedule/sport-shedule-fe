@@ -2,7 +2,7 @@ mat-card {
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 400px;
+  height: 432px;
   background-color: rgba(2, 48, 71, 1);
   color: rgba(251, 133, 0, 1);
   border-radius: 15px;

@@ -1,9 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EventStorageService } from '../services/event-storage.service';
 import { Event } from '../../models/event';
 import { Category } from '../../models/category';
 import { DataSourceService } from '../../services/data-source.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 function jsonCopy(src: any) {
   return JSON.parse(JSON.stringify(src));
@@ -14,10 +16,11 @@ function jsonCopy(src: any) {
   templateUrl: './event-card-editor.component.html',
   styleUrls: ['./event-card-editor.component.css']
 })
-export class EventCardEditorComponent implements OnInit {
+export class EventCardEditorComponent implements OnDestroy {
   sportEvent: Event;
   isAdding: boolean;
   categories: Category[] = [];
+  private unsubscribeSubject = new Subject<void>();
 
   constructor(@Inject(MAT_DIALOG_DATA) private dialogData: any,
               private dialogRef: MatDialogRef<EventCardEditorComponent>,
@@ -28,7 +31,9 @@ export class EventCardEditorComponent implements OnInit {
     this.categories = storage.categories;
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.unsubscribeSubject.next();
+    this.unsubscribeSubject.complete();
   }
 
   selectImage(e: any) {
@@ -48,13 +53,19 @@ export class EventCardEditorComponent implements OnInit {
   };
 
   save() {
-    if (this.isAdding) {
-      this.dataSource.addEvent(this.sportEvent).subscribe(_ => _);
-      this.dialogRef.close();
-      return;
-    }
-    this.dataSource.editEvent(this.sportEvent).subscribe(_ => _);
-    this.dialogRef.close();
+    this.dataSource.addEvent(this.sportEvent)
+      .pipe(takeUntil(this.unsubscribeSubject))
+      .subscribe(_ => {
+        this.dataSource.getSportEventTypes()
+          .pipe(takeUntil(this.unsubscribeSubject))
+          .subscribe(_ => {
+              this.storage.categories = _;
+            },
+            error => {
+              console.log(error);
+            },
+            () => this.dialogRef.close());
+      });
   }
 
   cancel() {

@@ -5,6 +5,7 @@
           class="title-name">{{ sportEvent.name }}</span>
   </mat-card-title>
   <mat-card-content>
+    <span class="team">{{ sportEvent.date | date:'dd.MM.yyyy HH:mm' }}</span>
     <img *ngIf="sportEvent.images[0]" [src]="'data:image/jpeg;base64,' + sportEvent?.images[0]" class="banner"
          loading="lazy">
     <div *ngIf="!sportEvent.images[0]" class="empty">Banner</div>

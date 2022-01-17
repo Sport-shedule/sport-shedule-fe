@@ -18,10 +18,6 @@ export class DataSourceService {
     return this.apiService.post<Event>(`/admin/event`, sportEvent);
   }
 
-  editEvent(sportEvent: Event): Observable<Event> {
-    return this.apiService.put<Event>(`/admin/editEvent`, sportEvent);
-  }
-
   deleteEvent(id: number): Observable<Event> {
     return this.apiService.delete(`/admin/event/${ id }`);
   }
