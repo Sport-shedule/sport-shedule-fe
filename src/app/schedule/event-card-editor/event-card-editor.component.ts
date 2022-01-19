@@ -6,10 +6,8 @@ import { Category } from '../../models/category';
 import { DataSourceService } from '../../services/data-source.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
-function jsonCopy(src: any) {
-  return JSON.parse(JSON.stringify(src));
-}
+import { jsonCopy } from '../../functions/json.copy';
+import { titleCaseWord } from '../../functions/titleCaseWord';
 
 @Component({
   selector: 'app-event-card-editor',
@@ -29,6 +27,10 @@ export class EventCardEditorComponent implements OnDestroy {
     this.isAdding = dialogData.isAdding;
     this.sportEvent = jsonCopy(dialogData.sportEvent);
     this.categories = storage.categories;
+  }
+
+  titleCaseWord(name: string) {
+    return titleCaseWord(name);
   }
 
   ngOnDestroy(): void {

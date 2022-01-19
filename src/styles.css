@@ -40,7 +40,7 @@ html::-webkit-scrollbar-thumb {
 .mat-tab-body-content {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   overflow: hidden !important;
 }
 

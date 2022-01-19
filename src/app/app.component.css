@@ -4,6 +4,10 @@
   font-size: calc(3.75em + 1vmin);
 }
 
+#logout {
+  right: -20%;
+}
+
 .header {
   display: flex;
   flex-direction: row;

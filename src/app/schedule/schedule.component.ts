@@ -8,6 +8,7 @@ import { DataSourceService } from '../services/data-source.service';
 import { CategoryEditorComponent } from './category-editor/category-editor.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { titleCaseWord } from '../functions/titleCaseWord';
 
 @Component({
   selector: 'app-schedule',
@@ -27,8 +28,8 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     this.dataSource.getSportEventTypes()
       .pipe(takeUntil(this.unsubscribeSubject))
       .subscribe(_ => {
-      this.storage.categories = _;
-    });
+        this.storage.categories = _;
+      });
   }
 
   getEvents(category: Category) {
@@ -36,7 +37,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   addEvent() {
-    const dialog = this.dialog.open(EventCardEditorComponent, {
+    this.dialog.open(EventCardEditorComponent, {
       data: {
         sportEvent: new Event(),
         isAdding: true
@@ -45,24 +46,12 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   }
 
   addCategory() {
-    const dialog = this.dialog.open(CategoryEditorComponent);
-    dialog.afterClosed()
-      .pipe(takeUntil(this.unsubscribeSubject))
-      .subscribe(_ => {
-        this.dataSource.getSportEventTypes().subscribe(_ => {
-          this.storage.categories = _;
-        });
-      });
+    this.dialog.open(CategoryEditorComponent);
   }
 
   ngOnDestroy(): void {
     this.unsubscribeSubject.next();
     this.unsubscribeSubject.complete();
-  }
-
-  titleCaseWord(word: string) {
-    if (!word) return word;
-    return word[0].toUpperCase() + word.substr(1).toLowerCase();
   }
 
   private compareByDate(a: Event, b: Event) {
@@ -74,4 +63,9 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     }
     return 0;
   }
+
+  titleCaseWord(name: string) {
+    return titleCaseWord(name);
+  }
 }
+

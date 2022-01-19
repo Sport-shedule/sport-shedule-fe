@@ -23,8 +23,14 @@ export class CategoryEditorComponent implements OnDestroy {
   save() {
     this.dataSource.addCategory(this.category)
       .pipe(takeUntil(this.unsubscribeSubject))
-      .subscribe(_ => _);
-    this.dialogRef.close();
+      .subscribe(_ => {
+        this.dataSource.getSportEventTypes()
+          .pipe(takeUntil(this.unsubscribeSubject))
+          .subscribe(_ => {
+            this.storage.categories = _;
+            this.dialogRef.close();
+          });
+      });
   }
 
   cancel() {

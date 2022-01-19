@@ -39,8 +39,8 @@ mat-card-title {
 
 .banner, .empty {
   display: flex;
-  width: 270px;
-  height: 170px;
+  width: 250px;
+  height: 150px;
   object-fit: contain;
   align-items: center;
   border-radius: 15px;
@@ -76,7 +76,6 @@ mat-select.input {
 
 ::ng-deep .select.mat-select-panel {
   background-color: rgba(229, 229, 229, 1) !important;
-  overflow: hidden !important;
 }
 
 .option {

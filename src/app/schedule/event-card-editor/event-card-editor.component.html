@@ -5,7 +5,7 @@
         <mat-select [(ngModel)]="sportEvent.categoryId" panelClass="select"
                     placeholder="Event type">
           <mat-option *ngFor="let category of categories" [value]="category.id"
-                      class="option">{{ category.name }}</mat-option>
+                      class="option">{{ titleCaseWord(category.name) }}</mat-option>
         </mat-select>
       </mat-form-field>
 

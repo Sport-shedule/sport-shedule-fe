@@ -2,7 +2,7 @@ mat-card {
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 432px;
+  height: 382px;
   background-color: rgba(2, 48, 71, 1);
   color: rgba(251, 133, 0, 1);
   border-radius: 15px;
@@ -30,7 +30,7 @@ mat-card-title {
 .banner, .empty {
   display: flex;
   width: 250px;
-  height: 200px;
+  height: 150px;
   object-fit: contain;
   align-items: center;
   border-radius: 15px;
@@ -39,7 +39,8 @@ mat-card-title {
 
 .empty {
   justify-content: center;
-  background-color: white;
+  background-color: rgba(2, 48, 71, 1);
+  border: 1px solid #ffffff69;
 }
 
 .text {

@@ -17,4 +17,8 @@ export class AppComponent {
   get hasAccess() {
     return this.userService.user;
   }
+
+  logout() {
+    this.userService.logout("");
+  }
 }
