@@ -54,6 +54,10 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     this.unsubscribeSubject.complete();
   }
 
+  titleCaseWord(name: string) {
+    return titleCaseWord(name);
+  }
+
   private compareByDate(a: Event, b: Event) {
     if (a.date > b.date) {
       return 1;
@@ -62,10 +66,6 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       return -1;
     }
     return 0;
-  }
-
-  titleCaseWord(name: string) {
-    return titleCaseWord(name);
   }
 }
 

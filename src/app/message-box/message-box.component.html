@@ -1,0 +1,18 @@
+﻿<div class="dialog">
+  <h2 mat-dialog-title>{{title}}</h2>
+  <mat-dialog-content>{{message}}</mat-dialog-content>
+  <mat-dialog-actions>
+    <button *ngIf="buttons==Mode.YesNoCancel||buttons==Mode.YesNo"
+            [mat-dialog-close]="Result.Yes" mat-button>Yes
+    </button>
+    <button *ngIf="buttons==Mode.YesNoCancel||buttons==Mode.YesNo"
+            [mat-dialog-close]="Result.No" mat-button>No
+    </button>
+    <button *ngIf="buttons==Mode.Ok||buttons==Mode.OkCancel"
+            [mat-dialog-close]="Result.Ok" mat-button>Ok
+    </button>
+    <button *ngIf="buttons==Mode.YesNoCancel||buttons==Mode.OkCancel"
+            [mat-dialog-close]="Result.Cancel" mat-button>Cancel
+    </button>
+  </mat-dialog-actions>
+</div>

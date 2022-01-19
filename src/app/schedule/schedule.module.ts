@@ -15,12 +15,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { DataSourceService } from '../services/data-source.service';
 import { CategoryEditorComponent } from './category-editor/category-editor.component';
+import { MessageBoxComponent } from '../message-box/message-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     EventCardComponent,
     EventCardEditorComponent,
-    CategoryEditorComponent
+    CategoryEditorComponent,
+    MessageBoxComponent
   ],
   imports: [
     ScheduleRoutingModule,
@@ -35,12 +38,14 @@ import { CategoryEditorComponent } from './category-editor/category-editor.compo
     MatDatepickerModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
+    MatDialogModule
   ],
   exports: [
     EventCardComponent,
     EventCardEditorComponent,
-    CategoryEditorComponent
+    CategoryEditorComponent,
+    MessageBoxComponent
   ],
   providers: [
     EventStorageService,

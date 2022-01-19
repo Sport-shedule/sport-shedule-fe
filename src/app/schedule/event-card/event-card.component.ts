@@ -6,6 +6,9 @@ import { Event } from '../../models/event';
 import { DataSourceService } from '../../services/data-source.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MessageBoxComponent } from '../../message-box/message-box.component';
+import { MessageBoxButtons } from '../../message-box/message-box-buttons';
+import { MessageBoxResult } from '../../message-box/message-box-result';
 
 @Component({
   selector: 'app-event-card',
@@ -27,15 +30,27 @@ export class EventCardComponent implements OnDestroy {
   }
 
   delete() {
-    this.dataSource.deleteEvent(this.sportEvent.id)
-      .pipe(takeUntil(this.unsubscribeSubject))
-      .subscribe(_ => {
-        this.dataSource.getSportEventTypes()
+    const dialogRef = this.dialog.open(MessageBoxComponent, {
+      data: {
+        'buttons': MessageBoxButtons.YesNo,
+        'title': 'Delete event?'
+      },
+      panelClass: 'dialog'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === MessageBoxResult.Yes) {
+        this.dataSource.deleteEvent(this.sportEvent.id)
           .pipe(takeUntil(this.unsubscribeSubject))
           .subscribe(_ => {
-            this.storage.categories = _;
+            this.dataSource.getSportEventTypes()
+              .pipe(takeUntil(this.unsubscribeSubject))
+              .subscribe(_ => {
+                this.storage.categories = _;
+              });
           });
-      });
+      }
+    });
   }
 
   edit() {

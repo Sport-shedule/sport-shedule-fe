@@ -1,0 +1,21 @@
+﻿mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-top: 24px;
+}
+
+mat-dialog-content {
+  white-space: pre-wrap;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(2, 48, 71, 1);
+  color: rgba(251, 133, 0, 1);
+  border-radius: 15px;
+  width: 220px;
+  height: 120px;
+  padding: 24px;
+}

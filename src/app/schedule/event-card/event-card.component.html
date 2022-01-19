@@ -13,10 +13,10 @@
     <div class="teams">
       <div class="team">
         <span>{{ sportEvent.firstPlayer.name }}</span>
-        <span class="score">{{ sportEvent.score.scorePlayer1 }}</span>
+        <span class="score">{{ sportEvent.firstPlayer.name.length > 0 ? sportEvent.score.scorePlayer1 : '' }}</span>
       </div>
       <div class="team">
-        <span class="score">{{ sportEvent.score.scorePlayer2 }}</span>
+        <span class="score">{{ sportEvent.secondPlayer.name.length > 0 ? sportEvent.score.scorePlayer2 : ''}}</span>
         <span>{{ sportEvent.secondPlayer.name }}</span>
       </div>
     </div>

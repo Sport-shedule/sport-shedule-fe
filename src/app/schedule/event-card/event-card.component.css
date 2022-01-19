@@ -64,6 +64,7 @@ mat-card-title {
   flex-direction: column;
   justify-content: space-between;
   width: 90%;
+  min-height: 100px;
   align-items: center;
 }
 
