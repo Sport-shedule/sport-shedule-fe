@@ -11,7 +11,7 @@ export class DataSourceService {
   }
 
   getSportEventTypes(): Observable<Category[]> {
-    return this.apiService.get<Category[]>(`/admin/category/all`);
+    return this.apiService.get<Category[]>(`/category/all`);
   }
 
   addEvent(sportEvent: Event): Observable<Event> {
